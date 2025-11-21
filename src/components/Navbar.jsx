@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ThemeToggle from './ThemeToggle'
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,8 +26,9 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-8 text-sm">
           <a href="#services" className="text-slate-200 hover:text-white transition-colors">Services</a>
           <a href="#work" className="text-slate-200 hover:text-white transition-colors">Work</a>
-          <a href="#about" className="text-slate-200 hover:text-white transition-colors">About</a>
+          <a href="#videos" className="text-slate-200 hover:text-white transition-colors">Videos</a>
           <a href="#contact" className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 ring-1 ring-white/10 transition">Contact</a>
+          <ThemeToggle />
         </div>
       </nav>
     </header>

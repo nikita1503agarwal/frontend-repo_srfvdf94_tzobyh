@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 function Services() {
   const services = [
     {
@@ -27,13 +29,21 @@ function Services() {
           <p className="mt-3 text-violet-200/80">A focused suite of services to launch and grow your product.</p>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((s) => (
-            <div key={s.title} className="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 hover:bg-white/7.5 transition">
+          {services.map((s, i) => (
+            <motion.div
+              key={s.title}
+              className="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 hover:bg-white/7.5 transition"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.05, duration: 0.4 }}
+              whileHover={{ y: -4 }}
+            >
               <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-purple-500 to-fuchsia-600 mb-4" />
               <h3 className="text-white font-semibold">{s.title}</h3>
               <p className="mt-2 text-sm text-violet-200/80">{s.desc}</p>
               <div className="mt-6 text-fuchsia-300/90 text-sm opacity-0 group-hover:opacity-100 transition">Learn more →</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 function Work() {
   const projects = [
     {
@@ -23,8 +25,16 @@ function Work() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {projects.map((p) => (
-            <div key={p.name} className="group overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 ring-1 ring-white/10">
+          {projects.map((p, i) => (
+            <motion.div
+              key={p.name}
+              className="group overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 ring-1 ring-white/10"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.06, duration: 0.45 }}
+              whileHover={{ y: -6 }}
+            >
               <div className="h-48 bg-[radial-gradient(ellipse_at_top_left,rgba(139,92,246,0.35),transparent_40%),radial-gradient(ellipse_at_bottom_right,rgba(236,72,153,0.35),transparent_35%)]" />
               <div className="p-6">
                 <span className="text-xs text-fuchsia-300/90">{p.tag}</span>
@@ -32,7 +42,7 @@ function Work() {
                 <p className="text-violet-200/80 text-sm mt-2">Performance-first. Accessible. Crafted with care.</p>
                 <div className="mt-4 inline-flex items-center text-fuchsia-300/90 text-sm">View case →</div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
